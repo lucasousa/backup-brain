@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backup Brain Wiki</title>
+</head>
+<body>
+    <h1>
+        Criar Nova Wiki
+    </h1>
+
+    <form method="POST" style="width: 60%; margin: 5% auto;">{% csrf_token %}
+        <div style="margin-bottom: 3%;">
+            <input name="title" type="text" placeholder="Título da Wiki" style="width: 98.5%; height: 21px; padding: 5px;">
+        </div>
+
+        {{form.description}}
+        <br>
+
+        <button type="submit" style="width: 30%; margin: 2% auto; display: block; padding: 5px;">Criar</button>
+    </form>
+
+    {{form.media}}
+    
+    {% for wiki in wikis %}
+    <div  style="width: 60%; margin: 4% auto;">
+            <h3>{{wiki.title}}</h3>
+            <p>
+                {{wiki.description|safe}}
+            </p>
+        </div>
+    {% endfor %}
+
+</body>
+</html>
